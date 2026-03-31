@@ -1,12 +1,17 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, Router as WouterRouter } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 
-function Router() {
+// Support GitHub Pages subdirectory deployment:
+// In production, VITE_BASE_PATH is set to "/vc-ecosystem-explorer/"
+// In dev, it defaults to "/"
+const basePath = (import.meta.env.VITE_BASE_PATH || "/").replace(/\/$/, "") || "/";
+
+function AppRouter() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
@@ -20,10 +25,12 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
+        <WouterRouter base={basePath === "/" ? undefined : basePath}>
+          <TooltipProvider>
+            <Toaster />
+            <AppRouter />
+          </TooltipProvider>
+        </WouterRouter>
       </ThemeProvider>
     </ErrorBoundary>
   );
