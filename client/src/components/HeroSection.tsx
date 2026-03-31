@@ -41,7 +41,7 @@ const stats = [
   { label: "Firms Analyzed", target: totalFirms, prefix: "", suffix: "", decimals: 0 },
   { label: "Combined AUM", target: totalAUM / 1000, prefix: "$", suffix: "B", decimals: 0 },
   { label: "Avg Seed Check", target: avgSeedCheck, prefix: "$", suffix: "M", decimals: 1 },
-  { label: "Data Points", target: 400, prefix: "", suffix: "+", decimals: 0 },
+  { label: "Metrics Tracked", target: 12, prefix: "", suffix: "+", decimals: 0 },
 ];
 
 export default function HeroSection() {
@@ -65,7 +65,7 @@ export default function HeroSection() {
               transition={{ delay: 0.1 }}
               className="text-xs font-mono uppercase tracking-[0.25em] text-teal-600 mb-4"
             >
-              Research Report — 2025/2026
+              Interactive Analysis — 2025/2026
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ export default function HeroSection() {
               className="text-muted-foreground text-base leading-relaxed max-w-lg mb-10"
             >
               An interactive analysis of seed and Series A financing across {totalFirms} leading venture capital firms.
-              Compare check sizes, graduation rates, fund performance, and deal velocity against industry benchmarks.
+              Compare check sizes, graduation rates, fund performance, and deal pacing against industry benchmarks.
             </motion.p>
 
             {/* Stats row */}

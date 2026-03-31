@@ -51,16 +51,16 @@ const METRICS: MetricDef[] = [
     getValue: f => f.seedMax,
     benchmark: INDUSTRY_BENCHMARKS.seedMedianRound,
     benchmarkLabel: "Median",
-    higherIsBetter: false,
-    description: "Maximum typical seed investment ($M)",
+    higherIsBetter: true,
+    description: "Maximum typical seed investment ($M). Larger is not inherently better — depends on founder needs.",
   },
   {
     key: "seriesAMax", label: "Series A Max", unit: "M",
     getValue: f => f.seriesAMax,
     benchmark: INDUSTRY_BENCHMARKS.seriesAMedianRound,
     benchmarkLabel: "Median",
-    higherIsBetter: false,
-    description: "Maximum typical Series A investment ($M)",
+    higherIsBetter: true,
+    description: "Maximum typical Series A investment ($M). Larger is not inherently better — depends on founder needs.",
   },
   {
     key: "dealsYr", label: "Deals / Year", unit: "",
@@ -96,7 +96,7 @@ const METRICS: MetricDef[] = [
     key: "dilution", label: "Dilution at Entry", unit: "%",
     getValue: f => f.dilution,
     higherIsBetter: false,
-    description: "Typical equity taken at entry",
+    description: "Typical equity taken at entry. ~10–15% at seed, ~20% at Series A for lead investors.",
   },
 ];
 

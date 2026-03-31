@@ -286,8 +286,10 @@ export default function FirmDetailDrawer({ firm, onClose, onToggleCompare, compa
                       It is the most commonly cited metric but can be misleading for recent funds.
                     </p>
                     <p>
-                      <strong>DPI ★</strong> (Distributed to Paid-In) is the only metric that reflects
-                      actual cash returned to LPs. A high TVPI with low DPI means gains are still on paper.
+                      <strong>DPI ★</strong> (Distributed to Paid-In) measures actual cash distributions
+                      to LPs. For mature funds (7+ years), DPI is the most reliable performance indicator.
+                      For younger funds, low DPI is expected and normal. A high TVPI with low DPI means
+                      gains are still on paper — which is typical for recent vintages.
                     </p>
                     <p>
                       Always compare performance within the same <strong>vintage year</strong>.
@@ -432,7 +434,7 @@ export default function FirmDetailDrawer({ firm, onClose, onToggleCompare, compa
                         {firm.founderFit.ownershipTargetMin}–{firm.founderFit.ownershipTargetMax}%
                       </span>
                     </div>
-                    <p className="text-[10px] text-muted-foreground mt-1">Industry typical: 15–20% at Series A</p>
+                    <p className="text-[10px] text-muted-foreground mt-1">Industry typical for lead investors: 15–20% at Series A</p>
                   </div>
 
                   {/* Decision timeline */}
@@ -456,10 +458,10 @@ export default function FirmDetailDrawer({ firm, onClose, onToggleCompare, compa
                     <div className="flex items-center gap-1.5">
                       {firm.founderFit.proRataFriendly
                         ? <CheckCircle className="w-4 h-4 text-teal-600" />
-                        : <XCircle className="w-4 h-4 text-amber-500" />
+                        : <Info className="w-4 h-4 text-amber-500" />
                       }
                       <span className="text-xs font-mono font-medium">
-                        {firm.founderFit.proRataFriendly ? "Offers pro-rata" : "Strict enforcement"}
+                        {firm.founderFit.proRataFriendly ? "Flexible on pro-rata" : "Exercises pro-rata aggressively"}
                       </span>
                     </div>
                   </div>

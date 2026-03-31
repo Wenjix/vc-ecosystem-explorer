@@ -188,7 +188,7 @@ export default function SectorActivityChart({ activeSector, onSelect }: Props) {
           <strong>v2 Scoring:</strong> Conviction scores are derived from structured sector conviction data
           (Primary = 3 pts, Active = 2 pts, Adjacent = 1 pt), plus a fractional bonus proportional to
           estimated deal share. This replaces the v1 heuristic that scored firms based on keyword position
-          in a marketing list — a method that was fragile and easily gamed.
+          in a marketing list — a method that was unreliable and sensitive to listing order.
         </p>
       </div>
 

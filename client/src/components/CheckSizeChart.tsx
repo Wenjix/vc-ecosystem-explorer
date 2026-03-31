@@ -99,7 +99,7 @@ export default function CheckSizeChart({ data, onSelect }: Props) {
       </div>
 
       <p className="text-[10px] text-muted-foreground mt-6 font-mono">
-        Teal = above industry median. Gray = at or below. Bars show min-max range, dots show average. Click any row for details.
+        Teal = above industry median. Gray = at or below. Bars show min–max range; dots show range midpoint (not observed average). Click any row for details.
       </p>
     </div>
   );

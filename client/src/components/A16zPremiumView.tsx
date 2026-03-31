@@ -184,6 +184,8 @@ const PREMIUM_DECOMPOSITION = [
 ];
 
 // Scatter data: valuation premium vs graduation rate by firm
+// NOTE: These are illustrative estimates for relative positioning.
+// No public data source provides firm-level valuation premiums.
 const FIRM_SCATTER = [
   {
     firm: "a16z",
@@ -337,8 +339,8 @@ export function A16zPremiumView() {
         </h2>
         <p className="text-muted-foreground text-sm max-w-2xl">
           A two-number summary of the premium Andreessen Horowitz commands when leading a Series A round —
-          decomposed into a <strong>valuation premium</strong> (what founders pay in dilution) and a{" "}
-          <strong>signaling premium</strong> (what they gain in follow-on probability). Data sourced from
+          decomposed into a <strong>valuation premium</strong> (how much higher a16z prices rounds above market) and a{" "}
+          <strong>signaling premium</strong> (the boost in follow-on probability their portfolio companies receive). Data sourced from
           J.P. Morgan, NVCA, Carta, and PitchBook (2019–2025).
         </p>
       </div>
@@ -370,9 +372,9 @@ export function A16zPremiumView() {
             </span>
           </div>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            a16z-led Series A rounds price at a median <strong className="text-foreground">+{avgPremium}% premium</strong> above
-            the all-sector US market median pre-money valuation. For Enterprise SaaS specifically,
-            the premium ranges from +47% (2022 correction) to +89% (2023 recovery).
+            a16z-led Series A rounds price at an estimated <strong className="text-foreground">+{avgPremium}% premium</strong> above
+            the all-sector US market median pre-money valuation. The premium has ranged from
+            +77% (2020) to +105% (2024) across market cycles.
           </p>
           <div className="mt-3 text-xs text-emerald-500 font-medium">
             Click to explore year-by-year →
@@ -417,12 +419,13 @@ export function A16zPremiumView() {
 
       {/* Interpretation Banner */}
       <div className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-4 text-xs text-amber-200/80 leading-relaxed">
-        <strong className="text-amber-400">How to read these numbers together:</strong> The valuation premium
-        tells you what a founder <em>pays</em> — higher dilution at entry. The signaling premium tells you what
-        they <em>get</em> — a dramatically higher probability of raising a Series B and getting there faster.
-        The rational founder question is: does the +{avgGradGap}pp graduation rate improvement justify the
-        +{avgPremium}% valuation premium? For most high-growth companies, the answer is yes — but the premium
-        is not free.
+        <strong className="text-amber-400">How to read these numbers together:</strong> A higher pre-money valuation
+        means <em>less dilution</em> for the founder at entry — for the same check size, an a16z-led round
+        gives up roughly half the equity of a market-rate round. The signaling premium compounds this:
+        a16z portfolio companies are <em>+{avgGradGap}pp more likely</em> to raise a Series B and get there faster.
+        The indirect cost is a higher valuation bar for subsequent rounds — if growth disappoints, the next
+        round may be flat or down. The rational founder question is: does my growth trajectory justify
+        the higher entry valuation?
       </div>
 
       {/* Tab Navigation */}
@@ -578,8 +581,9 @@ export function A16zPremiumView() {
             </h3>
             <p className="text-xs text-muted-foreground mt-1">
               2-year graduation window. Market rate from Carta/ACA (Peter Walker, Oct 2024) [4].
-              a16z rate from VC Explorer data and SignalRank analysis (85% of a16z Series B investments
-              are follow-ons from existing portfolio) [5].
+              a16z graduation rate is an estimate from VC Explorer portfolio analysis. Note: SignalRank [5] reports
+              that 85% of a16z's Series B <em>investments</em> go to existing portfolio companies — this measures
+              a16z's deal composition, not the graduation rate of their Series A portfolio.
             </p>
           </div>
 
@@ -685,7 +689,7 @@ export function A16zPremiumView() {
               <div className="text-xs text-muted-foreground mb-1">Correction Resilience</div>
               <div className="text-2xl font-bold text-emerald-500">5.3×</div>
               <div className="text-xs text-muted-foreground mt-1">
-                a16z 2022 cohort grad rate (48%) vs. market (9%) — brand insulates in downturns
+                a16z 2022 cohort grad rate (48%) vs. market (9%) — gap widened during downturn (selection effect likely contributes)
               </div>
             </div>
           </div>
@@ -710,9 +714,10 @@ export function A16zPremiumView() {
               What Drives the a16z Premium?
             </h3>
             <p className="text-xs text-muted-foreground mt-1">
-              The headline +{avgPremium}% valuation premium is not monolithic. It can be decomposed into
-              causal (brand/platform) and non-causal (selection/sector) components. This distinction
-              matters for founders: only the causal components represent value-add from the firm itself.
+              The headline +{avgPremium}% valuation premium is not monolithic. Below is an <strong>illustrative decomposition</strong> into
+              causal (brand/platform) and non-causal (selection/sector) components. These estimates are directional, not
+              empirically derived from a controlled study — no such study exists. The distinction matters for founders:
+              only the causal components represent value-add from the firm itself.
             </p>
           </div>
 
@@ -735,13 +740,11 @@ export function A16zPremiumView() {
           </div>
 
           <div className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-4 text-xs text-amber-200/80 leading-relaxed">
-            <strong className="text-amber-400">Selection vs. Treatment Effect:</strong> Approximately
-            {" "}<strong className="text-foreground">~{PREMIUM_DECOMPOSITION.find(d => d.component === "Selection Alpha")?.bps}pp</strong> of
-            the total premium reflects the quality of companies a16z selects — not the value the firm adds.
-            This is the core identification problem in VC brand research: a16z backs better companies,
-            so their portfolio outperforms even without the brand effect. The remaining
-            {" "}<strong className="text-foreground">~{61 - (PREMIUM_DECOMPOSITION.find(d => d.component === "Selection Alpha")?.bps ?? 0)}pp</strong> is
-            attributable to brand signal, platform services, and network effects — the true "a16z premium."
+            <strong className="text-amber-400">Important caveat — illustrative only:</strong> These component estimates
+            are directional approximations, not measured values. No controlled study can cleanly separate selection
+            from treatment in VC. a16z backs better companies, so some portion of every metric reflects company
+            quality, not firm value-add. The split shown here is one plausible decomposition — reasonable people
+            could allocate the components differently.
           </div>
 
           <div className="grid grid-cols-2 gap-3 text-xs">
@@ -774,11 +777,15 @@ export function A16zPremiumView() {
               Valuation Premium vs. Graduation Rate — Top-Tier Firms
             </h3>
             <p className="text-xs text-muted-foreground mt-1">
-              Each bubble represents a firm. X-axis = valuation premium above market median.
-              Y-axis = Series A → B graduation rate (2yr window). Bubble size = AUM.
-              The ideal quadrant is upper-right: high graduation rate AND high valuation premium
-              (the firm's signal is worth paying for).
+              Each bubble represents a firm. X-axis = estimated valuation premium above market median.
+              Y-axis = estimated Series A → B graduation rate (2yr window). Bubble size = AUM.
             </p>
+            <div className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 mt-2 text-xs text-amber-200/80">
+              <strong className="text-amber-400">Data note:</strong> Firm-level valuation premiums are not publicly disclosed.
+              Positions shown are directional estimates based on portfolio analysis, LP disclosures, and industry reporting.
+              Only a16z and the market median are grounded in the sourced data from the Valuation Premium tab.
+              Other firm positions reflect qualitative industry consensus, not measured values.
+            </div>
           </div>
 
           <ResponsiveContainer width="100%" height={360}>
@@ -843,8 +850,8 @@ export function A16zPremiumView() {
           {/* Quadrant labels */}
           <div className="grid grid-cols-2 gap-3 text-xs">
             <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3">
-              <div className="font-semibold text-emerald-400 mb-1">↗ Upper-Right: Premium Worth Paying</div>
-              <div className="text-muted-foreground">High graduation rate + high valuation premium. The brand signal justifies the dilution cost. a16z, Sequoia, Benchmark cluster here.</div>
+              <div className="font-semibold text-emerald-400 mb-1">↗ Upper-Right: High Premium, High Graduation</div>
+              <div className="text-muted-foreground">High graduation rate + high valuation premium. Whether the premium is "worth paying" depends on the founder's specific growth trajectory and alternatives.</div>
             </div>
             <div className="rounded-lg border border-border p-3">
               <div className="font-semibold text-slate-400 mb-1">↙ Lower-Left: Market-Rate Investors</div>
@@ -869,17 +876,22 @@ export function A16zPremiumView() {
               <strong className="text-foreground">Valuation Premium Methodology:</strong> Market median Series A
               pre-money valuations are sourced from J.P. Morgan Innovation Economy H2 2025 (PitchBook data),
               NVCA Q4 2025 Venture Monitor, and Carta State of Private Markets. The a16z "typical" pre-money
-              is derived from Tracxn's reported average Series A round size ($25.5M) and industry-standard
-              20% dilution norms, cross-validated against LP disclosures (UTIMCO, CalPERS) and industry
-              reporting. Firm-level pre-money data is not publicly disclosed; all a16z figures are estimates.
+              is derived from Tracxn's reported average Series A round size ($25.5M) and an assumed ~20%
+              dilution norm: pre-money = (round_size / dilution) - round_size. This derivation assumes a16z
+              takes the full round and targets exactly 20% — in reality, rounds often include multiple investors
+              and ownership targets vary. Cross-validated against LP disclosures (UTIMCO, CalPERS) and industry
+              reporting. Firm-level pre-money data is not publicly disclosed; all a16z figures are estimates
+              with meaningful uncertainty.
             </p>
             <p>
               <strong className="text-foreground">Signaling Premium Methodology:</strong> Market graduation
               rates are sourced from Carta's cohort analysis (Peter Walker / ACA, October 2024), which tracks
               the percentage of Series A companies by quarter that subsequently raised a Series B within 2 years.
-              a16z graduation rates are from the VC Ecosystem Explorer dataset (65% overall) and cross-validated
-              against SignalRank's finding (March 2026) that 85% of a16z's Series B investments are follow-ons
-              from existing portfolio companies.
+              a16z graduation rates are estimates from the VC Ecosystem Explorer portfolio analysis. Note:
+              SignalRank (March 2026) reports that 85% of a16z's Series B <em>investments</em> go to existing
+              portfolio companies — this measures a16z's deal composition (how they allocate Series B capital),
+              not the graduation rate of their Series A portfolio. These are different metrics with different
+              denominators and should not be conflated.
             </p>
             <p>
               <strong className="text-foreground">Key Caveat — Selection vs. Treatment:</strong> The most

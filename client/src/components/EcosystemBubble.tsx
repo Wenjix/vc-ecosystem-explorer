@@ -231,7 +231,7 @@ export default function EcosystemBubble({ data, onSelect, compareFirms, onToggle
             domain={logScale ? ["auto", "auto"] : [0, "auto"]}
           >
             <Label
-              value={logScale ? "Average Check Size (log scale)" : "Average Check Size ($M)"}
+              value={logScale ? "Typical Check Size — range midpoint (log scale)" : "Typical Check Size — range midpoint ($M)"}
               position="bottom" offset={20}
               style={{ fontSize: 11, fontFamily: "'DM Sans', sans-serif", fill: "#64748b" }}
             />

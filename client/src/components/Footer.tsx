@@ -21,7 +21,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 text-[10px] font-mono text-muted-foreground">
               <span className="px-2 py-0.5 bg-teal-100 text-teal-800 rounded">{VC_DATA.length} Firms</span>
               <span className="px-2 py-0.5 bg-secondary rounded">{ALL_STAGES.length} Stages</span>
-              <span className="px-2 py-0.5 bg-secondary rounded">400+ Data Points</span>
+              <span className="px-2 py-0.5 bg-secondary rounded">12+ Metrics</span>
             </div>
           </div>
           <div>
@@ -52,12 +52,12 @@ export default function Footer() {
           <div>
             <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-4">Methodology</p>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              All metrics represent estimates based on publicly available data as of Q1 2026. Check sizes reflect typical ranges, not absolute limits. Graduation rates and velocity metrics are approximations based on portfolio analysis and industry reports. Fund performance data (TVPI, IRR) is sourced from public LP disclosures (UTIMCO, CalPERS) and industry reporting.
+              All metrics represent estimates based on publicly available data as of Q1 2026. Check sizes reflect typical ranges, not absolute limits. Graduation rates and pacing metrics are approximations based on portfolio analysis and industry reports. Fund performance data (TVPI, IRR) is sourced from public LP disclosures (UTIMCO, CalPERS) and industry reporting. Different metrics draw from different sources — not all sources cover all firms or all metrics uniformly.
             </p>
           </div>
         </div>
         <div className="border-t border-border mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-[10px] font-mono text-muted-foreground">Research Report — March 2026</p>
+          <p className="text-[10px] font-mono text-muted-foreground">Interactive Analysis — March 2026</p>
           <p className="text-[10px] font-mono text-muted-foreground">Data as of Q1 2026 | All figures are estimates</p>
         </div>
       </div>

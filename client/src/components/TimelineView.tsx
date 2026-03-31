@@ -34,7 +34,7 @@ type Metric = "seedMax" | "seriesAMax" | "dealsYr" | "timeNext" | "aum";
 const METRIC_CONFIG: Record<Metric, { label: string; unit: string; desc: string; yLabel: string; hasIndustry: boolean }> = {
   seedMax:    { label: "Seed Check Size",    unit: "M",  desc: "Typical maximum seed investment ($M)", yLabel: "$M", hasIndustry: true },
   seriesAMax: { label: "Series A Check Size",unit: "M",  desc: "Typical maximum Series A investment ($M)", yLabel: "$M", hasIndustry: true },
-  dealsYr:    { label: "Deal Velocity",      unit: "",   desc: "Approximate number of deals per year", yLabel: "Deals/yr", hasIndustry: false },
+  dealsYr:    { label: "Deal Volume",        unit: "",   desc: "Approximate number of deals per year", yLabel: "Deals/yr", hasIndustry: false },
   timeNext:   { label: "Time to Next Round", unit: " mo",desc: "Median months from seed to Series A", yLabel: "Months", hasIndustry: true },
   aum:        { label: "AUM",                unit: "B",  desc: "Assets under management ($B)", yLabel: "$B", hasIndustry: false },
 };
@@ -486,26 +486,32 @@ export default function TimelineView() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-card border border-border rounded-lg p-5">
           <p className="text-[10px] font-mono uppercase tracking-wider text-teal-600 mb-2">ZIRP Peak (2021)</p>
-          <p className="text-2xl font-bold font-mono text-foreground">+60%</p>
+          <p className="text-2xl font-bold font-mono text-foreground">~+60%</p>
           <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-            Average seed check size increase across top-tier firms from 2020 to 2021 peak, driven by near-zero interest rates and record LP commitments.
+            Estimated seed check size increase across top-tier firms from 2020 to 2021 peak, driven by near-zero interest rates and record LP commitments.
           </p>
+          <p className="text-[9px] text-muted-foreground/60 font-mono mt-2">Source: PitchBook-NVCA Venture Monitor</p>
         </div>
         <div className="bg-card border border-border rounded-lg p-5">
           <p className="text-[10px] font-mono uppercase tracking-wider text-amber-600 mb-2">Correction (2022–23)</p>
-          <p className="text-2xl font-bold font-mono text-foreground">–22%</p>
+          <p className="text-2xl font-bold font-mono text-foreground">~–22%</p>
           <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-            Median deal velocity contraction across the ecosystem as rate hikes compressed valuations and LPs pulled back on new commitments.
+            Estimated deal volume contraction across the ecosystem as rate hikes compressed valuations and LPs pulled back on new commitments.
           </p>
+          <p className="text-[9px] text-muted-foreground/60 font-mono mt-2">Source: NVCA / Carta estimates</p>
         </div>
         <div className="bg-card border border-border rounded-lg p-5">
           <p className="text-[10px] font-mono uppercase tracking-wider text-blue-600 mb-2">AI Recovery (2024–26)</p>
-          <p className="text-2xl font-bold font-mono text-foreground">+38%</p>
+          <p className="text-2xl font-bold font-mono text-foreground">~+38%</p>
           <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-            Series A check size rebound for AI-focused firms (a16z, Thrive, GC) as generative AI deal flow drove selective but outsized rounds.
+            Estimated Series A check size rebound for AI-focused firms (a16z, Thrive, GC) as generative AI deal flow drove selective but outsized rounds.
           </p>
+          <p className="text-[9px] text-muted-foreground/60 font-mono mt-2">Source: J.P. Morgan Innovation Economy H2 2025</p>
         </div>
       </div>
+      <p className="text-[9px] text-muted-foreground/50 font-mono mt-1">
+        Note: These summary figures are approximate estimates derived from industry reports, not computed from the timeline data above.
+      </p>
     </div>
   );
 }

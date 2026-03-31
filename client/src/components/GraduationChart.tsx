@@ -102,7 +102,7 @@ export default function GraduationChart({ data }: Props) {
           </ScatterChart>
         </ResponsiveContainer>
         <p className="text-[10px] text-muted-foreground mt-2 font-mono">
-          Bubble size = markup multiple. Upper-left quadrant = best performers (high graduation, fast velocity).
+          Bubble size = markup multiple. Upper-left quadrant = highest graduation rate with fastest follow-on timing. This does not imply best outcomes — selectivity and exit quality are separate dimensions.
         </p>
       </div>
 
